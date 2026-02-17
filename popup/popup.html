@@ -3,16 +3,28 @@
 <head>
   <meta charset="utf-8">
   <style>
-    body { width: 300px; padding: 10px; }
-    .tab-item { margin: 5px 0; }
-    button { margin-top: 10px; }
+    body { width: 320px; padding: 12px; font-family: sans-serif; }
+    h3 { margin: 0 0 10px; }
+    .field { margin-bottom: 12px; }
+    label { display: block; font-weight: bold; margin-bottom: 4px; }
+    input[type="text"] { width: 100%; padding: 5px; box-sizing: border-box; }
+    .info { background: #f0f0f0; padding: 8px; border-radius: 4px; margin-bottom: 12px; }
+    .button-group { display: flex; gap: 8px; }
+    button { flex: 1; padding: 8px; cursor: pointer; }
   </style>
 </head>
 <body>
-  <h3>Tabs to Portfolio</h3>
-  <div id="tab-list"></div>
-  <button id="save-selected">Save Selected</button>
-  <button id="save-all">Save All</button>
+  <h3>tabs to portfolio!</h3>
+  <div class="field">
+    <label for="portfolio-name">portfolio name (optional)</label>
+    <input type="text" id="portfolio-name" placeholder="e.g., Work project">
+  </div>
+  <div class="info" id="tab-count">Loading tabs...</div>
+  <div class="button-group">
+    <button id="modify-set">modify set</button>
+    <button id="save">save</button>
+    <button id="cancel">cancel</button>
+  </div>
   <script src="popup.js"></script>
 </body>
 </html>
