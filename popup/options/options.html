@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Tabs To Portfolio – Settings</title>
+  <style>
+    body { font-family: sans-serif; max-width: 500px; margin: 20px auto; padding: 0 20px; }
+    fieldset { margin-bottom: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 5px; }
+    legend { font-weight: bold; }
+    .option-row { margin: 8px 0; display: flex; align-items: center; }
+    .option-row label { width: 200px; }
+    .option-row input[type="number"] { width: 60px; margin-left: 10px; }
+    .radio-group { margin-left: 10px; }
+    .radio-group label { margin-right: 15px; width: auto; }
+    .button-bar { text-align: right; margin-top: 20px; }
+    button { padding: 8px 20px; margin-left: 10px; }
+  </style>
+</head>
+<body>
+  <h2>Tabs To Portfolio Settings</h2>
+
+  <fieldset>
+    <legend>Thumbnail creation</legend>
+    <div class="option-row">
+      <label for="limitThumbnail">Limit thumbnail size to</label>
+      <input type="checkbox" id="limitThumbnailCheck">
+      <input type="number" id="limitThumbnailPx" value="160" min="20" max="1000" disabled>
+      <span>pixels</span>
+    </div>
+    <div class="option-row">
+      <label for="honourScroll">Honour scrolled page position</label>
+      <input type="checkbox" id="honourScroll">
+    </div>
+    <div class="option-row">
+      <label for="includePinned">Include pinned tabs</label>
+      <input type="checkbox" id="includePinned">
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Page layout</legend>
+    <div class="option-row">
+      <label>Layout mode:</label>
+      <div class="radio-group">
+        <label><input type="radio" name="layout" value="auto" id="layoutAuto"> Automatic</label>
+        <label><input type="radio" name="layout" value="fixed" id="layoutFixed" checked> Fixed</label>
+      </div>
+    </div>
+    <div class="option-row" id="columnsRow">
+      <label for="numColumns">Number of columns:</label>
+      <input type="number" id="numColumns" value="6" min="1" max="12">
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Font</legend>
+    <div class="option-row">
+      <label for="fontFamily">Font</label>
+      <select id="fontFamily">
+        <option value="Default">Default</option>
+        <option value="Arial">Arial</option>
+        <option value="Verdana">Verdana</option>
+        <option value="Times New Roman">Times New Roman</option>
+      </select>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Tab title</legend>
+    <div class="option-row">
+      <label for="titleFontSize">Font size:</label>
+      <select id="titleFontSize">
+        <option value="small">small</option>
+        <option value="medium" selected>medium</option>
+        <option value="large">large</option>
+      </select>
+    </div>
+    <div class="option-row">
+      <label for="titleLines">Number of lines:</label>
+      <input type="number" id="titleLines" value="1" min="1" max="5">
+    </div>
+  </fieldset>
+
+  <div class="button-bar">
+    <button id="cancel">Cancel</button>
+    <button id="save">Save</button>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

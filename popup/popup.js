@@ -25,3 +25,9 @@ document.getElementById('save').addEventListener('click', () => {
 document.getElementById('cancel').addEventListener('click', () => {
   window.close();
 });
+
+document.getElementById('open-settings').addEventListener('click', (e) => {
+  e.preventDefault();
+  browser.runtime.openOptionsPage(); // this will open the built-in options page
+  window.close();
+});

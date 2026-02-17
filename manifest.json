@@ -1,38 +1,26 @@
 {
   "manifest_version": 2,
-  "name": "Tabs-to-Portfolio",
-  "version": "1.0.0",
-  "description": "Save all open tabs as a visual HTML portfolio with thumbnails. Restore them anytime.",
-  "author": "Firefox Port",
-  "icons": {
-    "48": "icons/icon-48.png",
-    "96": "icons/icon-96.png"
-  },
+  "name": "Tabs to Portfolio",
+  "version": "1.0",
+  "description": "Save selected tabs as thumbnails in an HTML file.",
   "permissions": [
     "tabs",
-    "activeTab",
-    "<all_urls>",
     "downloads",
-    "storage"
+    "storage",
+    "<all_urls>"
   ],
   "browser_action": {
-    "default_popup": "popup/popup.html",
-    "default_icon": {
-      "48": "icons/icon-48.png"
-    },
-    "default_title": "Tabs to Portfolio"
+    "default_title": "Tabs to Portfolio",
+    "default_popup": "popup/popup.html"
+  },
+  "background": {
+    "scripts": ["background.js"]
   },
   "options_ui": {
     "page": "options/options.html",
-    "browser_style": true
+    "open_in_tab": true  // opens in a new tab rather than a small panel (better for complex settings)
   },
-  "background": {
-    "scripts": ["background/background.js"]
-  },
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "tabs-to-portfolio@firefox",
-      "strict_min_version": "57.0"
-    }
-  }
+  "web_accessible_resources": [
+    "modify/modify.html"
+  ]
 }
