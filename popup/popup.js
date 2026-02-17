@@ -1,36 +1,27 @@
-// Get all tabs in the current window
+let currentTabs = []; // store tabs for later use
+
+
 browser.tabs.query({ currentWindow: true }).then((tabs) => {
-  const tabList = document.getElementById('tab-list');
-  tabs.forEach((tab) => {
-    const div = document.createElement('div');
-    div.className = 'tab-item';
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.value = tab.id;
-    checkbox.id = `tab-${tab.id}`;
-    const label = document.createElement('label');
-    label.htmlFor = `tab-${tab.id}`;
-    label.textContent = tab.title || tab.url;
-    div.appendChild(checkbox);
-    div.appendChild(label);
-    tabList.appendChild(div);
+  currentTabs = tabs;
+  document.getElementById('tab-count').textContent = `${tabs.length} tab(s) will be included.`;
+});
+
+
+document.getElementById('modify-set').addEventListener('click', () => {
+  // We'll pass the tab list via storage or URL
+  browser.storage.local.set({ pendingTabs: currentTabs }).then(() => {
+    browser.tabs.create({ url: browser.runtime.getURL('modify/modify.html') });
+    window.close(); // close popup
   });
 });
 
-// Handle Save Selected button
-document.getElementById('save-selected').addEventListener('click', () => {
-  const checkboxes = document.querySelectorAll('#tab-list input:checked');
-  const tabIds = Array.from(checkboxes).map(cb => parseInt(cb.value));
-  // We'll handle saving later – for now, just close the popup and log
-  console.log('Selected tab IDs:', tabIds);
+document.getElementById('save').addEventListener('click', () => {
+  const name = document.getElementById('portfolio-name').value || 'Untitled';
+  // For now, just log and close
+  console.log('Save with name:', name);
   window.close();
 });
 
-// Handle Save All button
-document.getElementById('save-all').addEventListener('click', () => {
-  browser.tabs.query({ currentWindow: true }).then((tabs) => {
-    const tabIds = tabs.map(t => t.id);
-    console.log('All tab IDs:', tabIds);
-    window.close();
-  });
+document.getElementById('cancel').addEventListener('click', () => {
+  window.close();
 });
