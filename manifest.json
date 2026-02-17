@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "mypotfolio",
+  "name": "Tabs-to-Portfolio",
   "version": "1.0.0",
   "description": "Save all open tabs as a visual HTML portfolio with thumbnails. Restore them anytime.",
   "author": "Firefox Port",
